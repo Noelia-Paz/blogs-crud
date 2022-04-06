@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <div className="contenedor">
-      <h1 className="textoHeader">Bienvenido a Home</h1>
+      <h1 className="textoHeader">Bienvenido a mi aplicacion</h1>
       <div className="boton1">
         <button
           onClick={() => {
