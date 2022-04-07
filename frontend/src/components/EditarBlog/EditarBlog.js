@@ -28,7 +28,6 @@ function EditarBlog() {
   };
 
   const onSubmit = async (datos, event) => {
-    console.log(datos);
     event.preventDefault();
     if (verificarExtensionImagen(datos.imagen)) {
       await axios.put(`/api/blog/${blog.id}`, {

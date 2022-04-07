@@ -33,7 +33,7 @@ function Home() {
           }}
           className="botonInsertar"
         >
-          <h2 className="textoBoton">Insertar Nuevo Blog</h2>
+          <h2 className="textoBoton">Crear Nuevo Blog</h2>
         </button>
       </div>
       <div className="cards">
