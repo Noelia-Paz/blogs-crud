@@ -1,11 +1,13 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./detalles.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function DetallesBlog() {
   const location = useLocation();
   const navigate = useNavigate();
   const blog = location.state.blog;
+  const { isAuthenticated } = useAuth0();
 
   return (
     <div className="contorno">
@@ -30,14 +32,18 @@ function DetallesBlog() {
           </tbody>
         </table>
         <div className="botones">
-          <button
-            className="boton-editar"
-            onClick={() => {
-              navigate("/editar", { state: { blog: blog } });
-            }}
-          >
-            Editar
-          </button>
+          {isAuthenticated ? (
+            <button
+              className="boton-editar"
+              onClick={() => {
+                navigate("/editar", { state: { blog: blog } });
+              }}
+            >
+              Editar
+            </button>
+          ) : (
+            <></>
+          )}
 
           <button
             className="boton-atras"

@@ -7,13 +7,7 @@
 .contenedor {
   background: grey;
 }
-.textoHeader {
-  margin:0;
-  padding: 30px;
-  color: rebeccapurple;
-  text-align: center;
-  background-color: wheat;
-}
+
 .textoBoton {
   font-size: 25px;
   

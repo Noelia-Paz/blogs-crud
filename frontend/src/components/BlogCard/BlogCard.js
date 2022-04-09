@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import "./blogcard.css";
 import swal from "sweetalert";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function BlogCard(props) {
   let navigate = useNavigate();
@@ -30,6 +31,8 @@ function BlogCard(props) {
     });
   };
 
+  const { isAuthenticated } = useAuth0();
+
   return (
     <div className="container">
       <div className="card">
@@ -49,14 +52,18 @@ function BlogCard(props) {
           >
             Mas Detalles
           </button>
-          <button
-            className="boton-eliminar"
-            onClick={() => {
-              mostrarAlerta();
-            }}
-          >
-            Eliminar
-          </button>
+          {isAuthenticated ? (
+            <button
+              className="boton-eliminar"
+              onClick={() => {
+                mostrarAlerta();
+              }}
+            >
+              Eliminar
+            </button>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

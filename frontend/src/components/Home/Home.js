@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import "./home.css";
 
 //componentes
 import BlogCard from "../BlogCard/BlogCard";
+import Login from "../Login/Login";
 
 function Home() {
   let navigate = useNavigate();
@@ -23,18 +25,26 @@ function Home() {
     setBlogs(filteredBlogs);
   };
 
+  const { isAuthenticated } = useAuth0();
+
   return (
     <div className="contenedor">
-      <h1 className="textoHeader">Bienvenido a mi aplicacion</h1>
       <div className="boton1">
-        <button
-          onClick={() => {
-            navigate("/insertar");
-          }}
-          className="botonInsertar"
-        >
-          <h2 className="textoBoton">Crear Nuevo Blog</h2>
-        </button>
+        {isAuthenticated ? (
+          <button
+            onClick={() => {
+              navigate("/insertar");
+            }}
+            className="botonInsertar"
+          >
+            <h2 className="textoBoton">Crear Nuevo Blog</h2>
+          </button>
+        ) : (
+          <>
+            {" "}
+            <Login />
+          </>
+        )}
       </div>
       <div className="cards">
         {blogs.map((blog) => {
